@@ -20,4 +20,14 @@ class BlogController extends AbstractController
             'owner' => 'Nono',
         ]);
     }
+
+    /**
+     * @Route("/blog/list/{page}", requirements={"page"="\d+"}, defaults={"page"=1}, name="blog_list")
+     */
+    public function list($page)
+    {
+        return $this->render('blog/list.html.twig', ['page' => $page]);
+    }
+
+    public function show
 }
