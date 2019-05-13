@@ -9,6 +9,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 
 
+/**
+ * @Route("/blog", name="blog_")
+ */
+
 class BlogController extends AbstractController
 {
     /**
@@ -22,7 +26,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/blog/list/{page}", requirements={"page"="\d+"}, defaults={"page"=1}, name="blog_list")
+     * @Route("/list/{page}", requirements={"page"="\d+"}, defaults={"page"=1}, name="blog_list")
      */
     public function list($page)
     {
@@ -30,7 +34,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/blog/show/{slug}", requirements={"slug"="[-a-z0-9]*"}, defaults={"slug"="Article Sans Titre"}, name="show_item")
+     * @Route("/show/{slug}", requirements={"slug"="[-a-z0-9]*"}, defaults={"slug"="Article Sans Titre"}, name="show_item")
      */
     public function show($slug)
     {
