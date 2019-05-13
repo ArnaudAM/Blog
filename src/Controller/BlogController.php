@@ -29,5 +29,11 @@ class BlogController extends AbstractController
         return $this->render('blog/list.html.twig', ['page' => $page]);
     }
 
-    public function show
+    /**
+     * @Route("/blog/show/{slug}", requirements={"slug"="[-a-z0-9]*"}, defaults={"slug"="Article Sans Titre"}, name="show_item")
+     */
+    public function show($slug)
+    {
+        return $this->render('blog/show.html.twig', ['slug' => ucwords(implode(" ", explode("-", $slug)))]);
+    }
 }
