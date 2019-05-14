@@ -8,15 +8,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 
-
 /**
  * @Route("/blog", name="blog_")
  */
-
 class BlogController extends AbstractController
 {
     /**
-     * @Route("/blog", name="blog_index")
+     * @Route("/", name="index")
      */
     public function index()
     {
@@ -26,7 +24,7 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/list/{page}", requirements={"page"="\d+"}, defaults={"page"=1}, name="blog_list")
+     * @Route("/list/{page}", requirements={"page"="\d+"}, defaults={"page"=1}, name="list")
      */
     public function list($page)
     {
