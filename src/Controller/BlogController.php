@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,12 +16,24 @@ class BlogController extends AbstractController
 {
     /**
      * @Route("/", name="index")
+     * @return Response A response instance
      */
-    public function index()
+    public function index(): Response
     {
-        return $this->render('blog/index.html.twig', [
-            'owner' => 'Nono',
-        ]);
+        $articles = $this->getDoctrine()
+            ->getRepository(Article::class)
+            ->findAll();
+
+        if (!$articles) {
+            throw $this->createNotFoundException(
+                'No article found in article\'s table.'
+            );
+        }
+
+        return $this->render(
+            'blog/index.html.twig',
+            ['articles' => $articles]
+        );
     }
 
     /**
@@ -32,10 +45,18 @@ class BlogController extends AbstractController
     }
 
     /**
-     * @Route("/show/{slug}", requirements={"slug"="[-a-z0-9]*"}, defaults={"slug"="Article Sans Titre"}, name="show_item")
+     * Getting a article with a formatted slig for title
+     *
+     * @param string $slug The slugger
+     *
+     * @Route("/{slug<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="show_item")
+     *
+     * @return Response A response instance
      */
-    public function show($slug)
+    public function show(?string $slug) : Response
     {
         return $this->render('blog/show.html.twig', ['slug' => ucwords(implode(" ", explode("-", $slug)))]);
     }
+
+
 }
