@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\Article;
+use App\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -67,6 +68,7 @@ class BlogController extends AbstractController
             ->getRepository(Article::class)
             ->findOneBy(['title' => mb_strtolower($slug)]);
 
+
         if(!$article) {
             throw $this->createNotFoundException(
                 'No article with '. $slug . ' title, found in article\'s table.'
@@ -81,15 +83,33 @@ class BlogController extends AbstractController
         );
     }
 
-    /*
-     * Getting all articles by category
+    /**
      *
-     * @param string $categoryName The categorizer
-     * @Route("/category/{category<^[a-z0-9-]+$>}", default={"category" = null}, name = "show_category")
+     * @param string $categoryName
+     * @Route("/category/{categoryName}", requirements={"categoryName"="[a-zA-Z0-9-]+"}, name = "_category")
      * @return Response A response instance
      */
+
     public function showByCategory(string $categoryName) : Response
     {
+
+        $category = $this->getDoctrine()
+            ->getRepository(Category::class)
+            ->findOneBy(['name' => $categoryName]);
+
+
+        $articles = $this->getDoctrine()
+            ->getRepository(Article::class)
+            ->findBy(['category' => $category],
+                ['id' => 'Desc'],
+                3);
+
+
+       return $this->render('blog/category.html.twig',
+           [
+               'articles' => $articles,
+               'category' => $category,
+           ]);
 
     }
 
