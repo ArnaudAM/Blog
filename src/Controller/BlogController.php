@@ -49,7 +49,7 @@ class BlogController extends AbstractController
      * Getting a article with a formatted slug for title
      *
      * @param string $slug The slugger
-     * @Route("/{slug<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="show")
+     * @Route("/show/{slug<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="show")
      * @return Response A response instance
      */
     public function show(?string $slug) : Response
