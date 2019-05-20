@@ -7,7 +7,8 @@
     <h1>All articles from article s table : </h1>
     {% for article in articles %}
         <div>
-            <h2>{{ loop.index }} / {{ article.title }} - Category : {{ article.category.name }}</h2>
+            <h2>{{ loop.index }} / {{ article.title }} -
+                <a href="{{ path('blog_category', { 'name': article.category.name }) }}">Category : {{ article.category.name }}</a></h2>
             <p>{{ article.content }}</p>
         </div>
     {% else %}
