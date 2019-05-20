@@ -49,7 +49,7 @@ class BlogController extends AbstractController
      * Getting a article with a formatted slug for title
      *
      * @param string $slug The slugger
-     * @Route("/show/{slug<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="show")
+     * @Route("/{slug<^[a-z0-9-]+$>}", defaults={"slug" = null}, name="show")
      * @return Response A response instance
      */
     public function show(?string $slug) : Response
@@ -85,19 +85,19 @@ class BlogController extends AbstractController
 
     /**
      *
-     * @param string $categoryName
-     * @Route("/category/{categoryName}", requirements={"categoryName"="[a-zA-Z0-9-]+"}, name = "_category")
+     * @param object $category
+     * @Route("/category/{name}", requirements={"name"="[a-zA-Z0-9-]+"}, name = "category")
      * @return Response A response instance
      */
 
-    public function showByCategory(string $categoryName) : Response
+    public function showByCategory(Category $category) : Response
     {
-
+        /*
         $category = $this->getDoctrine()
             ->getRepository(Category::class)
-            ->findOneBy(['name' => $categoryName]);
-
-        $articles=$category->getArticles();
+            ->findOneBy(['name' => $name]);
+        */
+        $articles = $category->getArticles();
 
         /*$articles = $this->getDoctrine()
             ->getRepository(Article::class)
