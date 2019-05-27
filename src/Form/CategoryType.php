@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Form;
-
 
 use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
@@ -13,7 +11,9 @@ class CategoryType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name');
+        $builder
+            ->add('name')
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

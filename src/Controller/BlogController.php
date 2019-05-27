@@ -5,7 +5,6 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Category;
-use App\Form\ArticleSearchType;
 use App\Form\CategoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,12 +23,6 @@ class BlogController extends AbstractController
      */
     public function index(): Response
     {
-        $category = new CategoryType();
-        $form = $this->createForm(
-            CategoryType::class,
-            null,
-            ['method'=> Request::METHOD_GET]
-        );
 
         $articles = $this->getDoctrine()
             ->getRepository(Article::class)
@@ -44,7 +37,6 @@ class BlogController extends AbstractController
         return $this->render(
             'blog/index.html.twig',
             ['articles' => $articles,
-            'form' => $form->createView(),
         ]);
     }
 
@@ -103,11 +95,11 @@ class BlogController extends AbstractController
 
     public function showByCategory(Category $category) : Response
     {
-        /*
-        $category = $this->getDoctrine()
+
+  /*      $category = $this->getDoctrine()
             ->getRepository(Category::class)
-            ->findOneBy(['name' => $name]);
-        */
+            ->findOneBy(['name' => $name]);*/
+
         $articles = $category->getArticles();
 
         /*$articles = $this->getDoctrine()
