@@ -1,0 +1,14 @@
+{# templates/blog/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Add category{% endblock %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Add Category</button>
+    {{ form_end(form) }}
+
+{% endblock %}

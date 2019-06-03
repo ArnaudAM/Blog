@@ -1,0 +1,24 @@
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    background-color: lightgrey;
+}
+
+h2 {
+    font-family: Consolas;
+}
+
+tbody {
+    background-color: lightgrey;
+}
+
+.navbar-pers {
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+}
+ .nav-link {
+   font-size: 20px;
+   color: white;
+ }

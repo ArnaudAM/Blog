@@ -5,7 +5,9 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Entity\Category;
+use App\Form\CategoryType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -21,6 +23,7 @@ class BlogController extends AbstractController
      */
     public function index(): Response
     {
+
         $articles = $this->getDoctrine()
             ->getRepository(Article::class)
             ->findAll();
@@ -33,8 +36,8 @@ class BlogController extends AbstractController
 
         return $this->render(
             'blog/index.html.twig',
-            ['articles' => $articles]
-        );
+            ['articles' => $articles,
+        ]);
     }
 
     /**
@@ -92,11 +95,11 @@ class BlogController extends AbstractController
 
     public function showByCategory(Category $category) : Response
     {
-        /*
-        $category = $this->getDoctrine()
+
+  /*      $category = $this->getDoctrine()
             ->getRepository(Category::class)
-            ->findOneBy(['name' => $name]);
-        */
+            ->findOneBy(['name' => $name]);*/
+
         $articles = $category->getArticles();
 
         /*$articles = $this->getDoctrine()
