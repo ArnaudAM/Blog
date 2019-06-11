@@ -19,6 +19,11 @@
             <tr>
                 <td>{{ article.id }}</td>
                 <td>{{ article.title }}</td>
+                <td>
+                    {% for tag in article.tags %}
+                        <p>{{ tag.name }}</p>
+                    {% endfor %}
+                </td>
                 <td>{{ article.content }}</td>
                 <td>
                     <a href="{{ path('article_show', {'id': article.id}) }}">show</a>

@@ -8,6 +8,11 @@
 <div>
     <h1>Real article's title : {{ article.title }}</h1>
     <h2>Category : {{ article.category.name }}</h2>
+    <p>Tags :
+            {% for tag in article.tags %}
+                {{ tag.name }}
+            {% endfor %}
+    </p>
     <p>{{ article.content }}</p>
 </div>
 

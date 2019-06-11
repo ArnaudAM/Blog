@@ -7,43 +7,42 @@
 
 
 
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Tags</th>
+            <th>Content</th>
+        </tr>
+        </thead>
+        {% for article in articles %}
+            <tbody>
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ article.title }}</td>
+                <td>
+                    <a href="{{ path('blog_category', { 'name': article.category.name }) }}">
+                        Category : {{ article.category.name }}
+                    </a>
+                </td>
+                <td>
+                    {% for tag in article.tags %}
+                        <p>{{ tag.name }}</p>
+                    {% endfor %}
+                </td>
+                <td>
+                    <p>{{ article.content }}</p>
+                </td>
+            </tr>
+            </tbody>
+        {% else %}
+            Aucun article trouvé.
+        {% endfor %}
+    </table>
+
     <h1>All articles from article s table : </h1>
-    {% for article in articles %}
-        <div>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Tags</th>
-                    <th scope="col">Content</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>{{ loop.index }}</td>
-                    <td>{{ article.title }}</td>
-                    <td>
-                        <a href="{{ path('blog_category', { 'name': article.category.name }) }}">
-                            Category : {{ article.category.name }}
-                        </a>
-                    </td>
-                    <td>
-                        {% for tag in article.tags %}
-                            <p>{{ tag.name }}</p>
-                        {% endfor %}
-                    </td>
-                    <td>
-                        <p>{{ article.content }}</p>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    {% else %}
-        Aucun article trouvé.
-    {% endfor %}
 
 
     <a href="{{ path('app_index') }}">
