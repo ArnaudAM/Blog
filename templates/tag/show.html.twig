@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tag{% endblock %}
+
+{% block body %}
+    <h1>Tag</h1>
+
+    <div class="container">
+        <table class="table table-dark">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Category</th>
+                <th scope="col">Title</th>
+                <th scope="col">Article</th>
+                <th scope="col">Tag</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for article in articles %}
+                <tr>
+                    <th scope="row">{{ article.id }}</th>
+                    <td>{{ article.category.name }}</td>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.content }}</td>
+                    <td>{{ tag.name }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="{{ path('tag_index') }}">back to list</a>
+
+{% endblock %}
