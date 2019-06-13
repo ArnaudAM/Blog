@@ -44,6 +44,7 @@ class Article
      */
     private $slug;
 
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
