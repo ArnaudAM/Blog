@@ -1,0 +1,11 @@
+{% extends 'article/email/layout.html.twig' %}
+
+{% block body %}
+    <h1>Un article qui peut vous intéresser vient de paraître</h1>
+
+    <p>Cet email vous est envoyé par : {{ name }}</p>
+
+    <br>
+    <p>Titre : <a href="{{ url('article_show', {'id': article.id}) }}">{{  article.title }}</a></p>
+    <p>Cliquer sur le titre de l'artcile pour y accéder directement sur notre site.</p>
+{% endblock %}
