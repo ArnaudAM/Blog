@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "983995a800363c9bd12185847d1b921a",
+    "content-hash": "4f852cdbdbbb5b60b3e23c49344c07a6",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -4153,16 +4153,16 @@
         },
         {
             "name": "symfony/security-bundle",
-            "version": "v4.2.8",
+            "version": "v4.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-bundle.git",
-                "reference": "5d3f378675a244a515dc8fdb96e96b9780639672"
+                "reference": "05034e041d0a2195d53be455d46c540d0b81de2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/5d3f378675a244a515dc8fdb96e96b9780639672",
-                "reference": "5d3f378675a244a515dc8fdb96e96b9780639672",
+                "url": "https://api.github.com/repos/symfony/security-bundle/zipball/05034e041d0a2195d53be455d46c540d0b81de2d",
+                "reference": "05034e041d0a2195d53be455d46c540d0b81de2d",
                 "shasum": ""
             },
             "require": {
@@ -4235,7 +4235,7 @@
             ],
             "description": "Symfony SecurityBundle",
             "homepage": "https://symfony.com",
-            "time": "2019-04-11T11:58:13+00:00"
+            "time": "2019-05-30T16:06:08+00:00"
         },
         {
             "name": "symfony/security-core",

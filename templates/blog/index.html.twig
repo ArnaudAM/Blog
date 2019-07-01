@@ -13,6 +13,7 @@
         <tr>
             <th>Id</th>
             <th>Title</th>
+            <th>Slug</th>
             <th>Category</th>
             <th>Tags</th>
             <th>Content</th>
@@ -23,6 +24,7 @@
             <tr>
                 <td>{{ loop.index }}</td>
                 <td>{{ article.title }}</td>
+                <td>{{ article.slug }}</td>
                 <td>
                     <a href="{{ path('blog_category', { 'name': article.category.name }) }}">
                         Category : {{ article.category.name }}
