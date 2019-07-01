@@ -24,7 +24,7 @@ class UserFixtures extends Fixture
         $author->setRoles(['ROLE_AUTHOR']);
         $author->setPassword($this->passwordEncoder->encodePassword(
             $author,
-            'authorpassword'
+            'author'
         ));
 
         $manager->persist($author);
@@ -35,7 +35,7 @@ class UserFixtures extends Fixture
         $admin->setRoles(['ROLE_ADMIN']);
         $admin->setPassword($this->passwordEncoder->encodePassword(
             $admin,
-            'adminpassword'
+            'admin'
         ));
 
         $manager->persist($admin);
